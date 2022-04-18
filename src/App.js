@@ -15,7 +15,7 @@ function App() {
         <Route path='/riwayat' element={<Riwayat />} />
         <Route path='/daftar' element={<Daftar />} />
         <Route path='/masuk' element={<Masuk />} />
-        <Route path='/resetpassword' element={<LupaPassword />} />
+        <Route path='/reset-password' element={<LupaPassword />} />
       </Routes>
     </Router>
   );
