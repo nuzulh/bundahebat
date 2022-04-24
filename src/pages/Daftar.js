@@ -39,7 +39,7 @@ function Daftar() {
                 <p>Atau Daftar Melalui</p>
                 <div className='metode-lain'>
                     <button><i className="fa-brands fa-facebook-f"></i>LOGIN WITH FACEBOOK</button>
-                    <button><i class="fa-brands fa-google"></i>LOGIN WITH GOOGLE</button>
+                    <button><i className="fa-brands fa-google"></i>LOGIN WITH GOOGLE</button>
                 </div>
                 <p>Belum memiliki akun? Daftar <NavLink to='/daftar'>disini</NavLink></p>
             </div>
