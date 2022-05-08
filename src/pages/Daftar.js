@@ -1,10 +1,35 @@
 import SignDecoration from "../components/SignDecoration";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import '../css/Sign.css';
+import API from '../API';
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 function Daftar() {
-    const daftar = (e) => {
+    const [data, setData] = useState({
+        front_name: '',
+        back_name: '',
+        email: '',
+        password: ''
+    });
+    const navigate = useNavigate();
+
+    const daftar = async (e) => {
         e.preventDefault();
+        await API.post('/user/register', data).then(res => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Daftar berhasil!',
+                timer: 3000
+            });
+            navigate('/masuk');
+        }).catch(err => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Registrasi gagal',
+                text: err.response.data.message
+            });
+        });
     };
     return (
         <div className='sign'>
@@ -19,17 +44,17 @@ function Daftar() {
                     <div className='row'>
                         <div className='col'>
                             <label htmlFor='nama-depan'>Nama Depan</label>
-                            <input type='text' name='nama-depan' required />
+                            <input type='text' name='nama-depan' required onChange={e => setData({...data, front_name: e.target.value})} />
                         </div>
                         <div className='col'>
                             <label htmlFor='nama-belakang'>Nama Belakang</label>
-                            <input type='text' name='nama-belakang' required />
+                            <input type='text' name='nama-belakang' onChange={e => setData({...data, back_name: e.target.value})} />
                         </div>
                     </div>
                     <label htmlFor='email'>Alamat Email</label>
-                    <input type='email' name='email' required />
+                    <input type='email' name='email' required onChange={e => setData({...data, email: e.target.value})} />
                     <label htmlFor='password'>Buat Kata Sandi</label>
-                    <input type='password' name='password' required />
+                    <input type='password' name='password' required onChange={e => setData({...data, password: e.target.value})} />
                     <div className='syarat-setuju'>
                         <input type='checkbox' name='setuju' required />
                         <span>Saya setuju dengan <a href="#">syarat & ketentuan</a></span>
