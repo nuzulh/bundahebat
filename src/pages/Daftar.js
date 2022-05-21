@@ -4,6 +4,7 @@ import '../css/Sign.css';
 import API from '../API';
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { CircularProgress } from "@mui/material";
 
 function Daftar() {
     const [data, setData] = useState({
@@ -13,8 +14,10 @@ function Daftar() {
         password: ''
     });
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const daftar = async (e) => {
+        setLoading(true);
         e.preventDefault();
         await API.post('/user/register', data).then(res => {
             Swal.fire({
@@ -22,6 +25,7 @@ function Daftar() {
                 title: 'Daftar berhasil!',
                 timer: 3000
             });
+            setLoading(false);
             navigate('/masuk');
         }).catch(err => {
             Swal.fire({
@@ -29,6 +33,7 @@ function Daftar() {
                 title: 'Registrasi gagal',
                 text: err.response.data.message
             });
+            setLoading(false);
         });
     };
     return (
@@ -59,7 +64,7 @@ function Daftar() {
                         <input type='checkbox' name='setuju' required />
                         <span>Saya setuju dengan <a href="#">syarat & ketentuan</a></span>
                     </div>
-                    <button>DAFTAR</button>
+                    <button>DAFTAR {loading ? <CircularProgress color="inherit" size={20} /> : ''}</button>
                 </form>
                 <p>Atau Daftar Melalui</p>
                 <div className='metode-lain'>
