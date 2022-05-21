@@ -66,6 +66,10 @@
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 .sign-box form button:hover {
     background-color: #9b4202;

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import API from '../API';
+import { CircularProgress } from "@mui/material";
 
 function Masuk() {
     const [data, setData] = useState({
@@ -12,8 +13,10 @@ function Masuk() {
         password: ''
     });
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const masuk = async (e) => {
+        setLoading(true);
         e.preventDefault();
         await API.post('/user/login', data).then(res => {
             localStorage.setItem('token', res.data);
@@ -22,6 +25,7 @@ function Masuk() {
                 title: 'Login berhasil!',
                 timer: 3000
             });
+            setLoading(false);
             navigate('/');
         }).catch(err => {
             Swal.fire({
@@ -29,6 +33,7 @@ function Masuk() {
                 title: 'Login gagal',
                 text: err.response.data
             });
+            setLoading(false);
         });
     };
     return (
@@ -45,7 +50,7 @@ function Masuk() {
                     <input type='email' name='email' required onChange={e => setData({...data, email: e.target.value})} />
                     <label htmlFor='password'>Kata Sandi</label>
                     <input type='password' name='password' required onChange={e => setData({...data, password: e.target.value})} />
-                    <button>LOGIN</button>
+                    <button>LOGIN {loading ? <CircularProgress color="inherit" size={20} /> : ''}</button>
                 </form>
                 <p>Atau Daftar Melalui</p>
                 <div className='metode-lain'>
