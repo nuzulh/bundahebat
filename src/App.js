@@ -11,11 +11,11 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/riwayat' element={<Riwayat />} />
-        <Route path='/daftar' element={<Daftar />} />
-        <Route path='/masuk' element={<Masuk />} />
-        <Route path='/reset-password' element={<LupaPassword />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/riwayat' element={<Riwayat />} />
+          <Route path='/daftar' element={<Daftar />} />
+          <Route path='/masuk' element={<Masuk />} />
+          <Route path='/reset-password' element={<LupaPassword />} />
       </Routes>
     </Router>
   );
