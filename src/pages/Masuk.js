@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import API from '../API';
 import { CircularProgress } from "@mui/material";
+import jwt from 'jwt-decode';
 
 function Masuk() {
     const [data, setData] = useState({
@@ -20,13 +21,10 @@ function Masuk() {
         e.preventDefault();
         await API.post('/user/login', data).then(res => {
             localStorage.setItem('token', res.data);
-            Swal.fire({
-                icon: 'success',
-                title: 'Login berhasil!',
-                timer: 3000
-            });
+            localStorage.setItem('user', jwt(res.data)._id);
             setLoading(false);
             navigate('/');
+            window.location.reload();
         }).catch(err => {
             Swal.fire({
                 icon: 'error',
