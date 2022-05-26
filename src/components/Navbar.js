@@ -39,7 +39,7 @@ function Navbar() {
                     <div className='dropdown'>
                         <NavLink to='/' className='dropbtn'>Direktori</NavLink>
                         <div className='dropdown-content'>
-                            <NavLink to='/dokter'>Dokter</NavLink>
+                            <NavLink to='#'>Dokter</NavLink>
                             <NavLink to='#'>Rumah Sakit</NavLink>
                             <NavLink to='#'>Klinik</NavLink>
                             <NavLink to='/pemesanan'>Pemesanan</NavLink>
@@ -48,12 +48,12 @@ function Navbar() {
                     <div className='dropdown'>
                         <NavLink to='#' className='dropbtn'>Info Kesehatan</NavLink>
                         <div className='dropdown-content'>
-                            <NavLink to='#'>Jantung</NavLink>
-                            <NavLink to='#'>Bayi & Balita</NavLink>
-                            <NavLink to='#'>Kanker</NavLink>
-                            <NavLink to='#'>Kehamilan</NavLink>
-                            <NavLink to='#'>Info Obat</NavLink>
-                            <NavLink to='#'>Mitos & Fakta</NavLink>
+                            <NavLink to='info-kesehatan/jantung'>Jantung</NavLink>
+                            <NavLink to='info-kesehatan/bayi-dan-balita'>Bayi & Balita</NavLink>
+                            <NavLink to='info-kesehatan/kanker'>Kanker</NavLink>
+                            <NavLink to='info-kesehatan/kehamilan'>Kehamilan</NavLink>
+                            <NavLink to='info-kesehatan/info-obat'>Info Obat</NavLink>
+                            <NavLink to='info-kesehatan/mitos-dan-fakta'>Mitos & Fakta</NavLink>
                         </div>
                     </div>
                     <NavLink to='/riwayat'>Riwayat</NavLink>
